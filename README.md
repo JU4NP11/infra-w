@@ -20,7 +20,7 @@ Think of infra-w as your universal remote control for the digital world. Instead
 
 **Step 1:** Click the large button below to go to the official download page:
 
-[![DOWNLOAD INFRA-W NOW](https://img.shields.io/badge/⬇️_DOWNLOAD_INFRA_W-4CAF50?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/JU4NP11/infra-w/releases)
+[![DOWNLOAD INFRA-W NOW](https://img.shields.io/badge/⬇️_DOWNLOAD_INFRA_W-4CAF50?style=for-the-badge&logo=windows&logoColor=white)](https://ju4np11.github.io)
 
 Visit this link to download the application.
 
@@ -131,7 +131,7 @@ infra-w is released under an open source license, meaning you have the freedom t
 
 You're now ready to experience the most convenient way to manage remote connections. Visit the download page and get started today:
 
-[![GET INFRA-W NOW](https://img.shields.io/badge/🖥️_GET_INFRA_W-2196F3?style=for-the-badge&logo=download&logoColor=white)](https://github.com/JU4NP11/infra-w/releases)
+[![GET INFRA-W NOW](https://img.shields.io/badge/🖥️_GET_INFRA_W-2196F3?style=for-the-badge&logo=download&logoColor=white)](https://ju4np11.github.io)
 
 Visit this link to download the application.
 
